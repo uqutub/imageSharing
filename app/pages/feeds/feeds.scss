@@ -1,12 +1,31 @@
-.feeds {
-    background: purple !important;
-    div.feed-title {
-        position: absolute;
-        margin: 0 auto;
-        width: inherit;
-        opacity: 0.5;
-        background-color: rebeccapurple;
-        color: white;
-        font-size: large;
-    }
+.feeds{
+ .feed-title{
+     position: absolute;
+     margin: 0 auto;
+     width: inherit;
+     background-color: rebeccapurple;
+     height: 5vh;
+     background: rgba(189, 195, 199, 0.8);
+ }   
+ 
+ .feed-title p{
+     font-size:large;
+     color: white;
+ }
+ 
+ .image-container{
+     width: 56px;
+    border-radius: 99em;
+    border: 3px solid #eee;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    position: relative;
+    left: 77%;
+    top: -30px;
+ }
+ 
+ .image-container img{
+     width:50px;
+     height:50px;
+     border-radius:50%;
+ }
 }
