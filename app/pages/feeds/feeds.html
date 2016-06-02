@@ -4,12 +4,13 @@
         <div class="feed-title">
             <p>The quick brown fox jumps</p>
         </div>
-        <img src="images/avatar1.jpg" />
+        <div class="image">
+            <img src="images/avatar1.jpg" /></div>
         <div class="image-container">
-            <img src="images/avatar2.jpg">
+            <img src="images/profile.jpg">
         </div>
         <ion-card-content no-padding>
-            <ion-row no-padding>
+            <ion-row>
                 <ion-col>
                     <button clear small danger>
           <ion-icon name='star'></ion-icon>
@@ -25,20 +26,61 @@
                 <ion-col text-right>
                     <button clear small danger>
           <ion-icon name='share-alt'></ion-icon>
-          Share
+          Comment
         </button>
                 </ion-col>
             </ion-row>
 
         </ion-card-content>
+        <div>
 
+
+            <ion-toolbar class="comment-area" position="bottom">
+                <ion-item class="comment-box">
+                    <ion-input style="background:#f8f8f8;" type="text" placeholder="Username"></ion-input>
+                </ion-item>
+                <ion-buttons end>
+                    <button royal>
+                            <ion-icon rebeccapurple name="send"></ion-icon>
+                            </button>
+                </ion-buttons>
+            </ion-toolbar>
+
+            <ion-list>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="images/profile.jpg">
+                    </ion-avatar>
+                    <h2>Cher</h2>
+                    <p>Ugh. As if.</p>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="images/profile.jpg">
+                    </ion-avatar>
+                    <h2>Cher</h2>
+                    <p>Ugh. As if.</p>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-left>
+                        <img src="images/profile.jpg">
+                    </ion-avatar>
+                    <h2>Cher</h2>
+                    <p>Ugh. As if.</p>
+                </ion-item>
+            </ion-list>
+
+
+        </div>
     </ion-card>
-    
+
     <ion-card>
         <div class="feed-title">
             <p>The quick brown fox jumps</p>
         </div>
-        <img src="images/1.jpg" />
+        <div class="image">
+            <img src="images/1.jpg" />
+        </div>
         <div class="image-container">
             <img src="images/avatar2.jpg">
         </div>
@@ -68,11 +110,13 @@
 
     </ion-card>
 
-  <ion-card>
+    <ion-card>
         <div class="feed-title">
             <p>The quick brown fox jumps</p>
         </div>
-        <img src="images/2.jpg" />
+        <div class="image">
+            <img src="images/2.jpg" />
+        </div>
         <div class="image-container">
             <img src="images/avatar2.jpg">
         </div>
@@ -103,11 +147,12 @@
     </ion-card>
 
 
- <ion-card>
+    <ion-card>
         <div class="feed-title">
             <p>The quick brown fox jumps</p>
         </div>
-        <img src="images/3.jpg" />
+        <div class="image">
+            <img src="images/3.jpg" /></div>
         <div class="image-container">
             <img src="images/avatar2.jpg">
         </div>
