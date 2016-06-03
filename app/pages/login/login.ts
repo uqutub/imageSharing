@@ -1,6 +1,8 @@
 import { Page, NavController } from "ionic-angular"
 import {GeneralService} from '../../services/general'
 import { HomePage } from "../home/home";
+import { FeedCardPage } from "../feedCard/feedCard";
+
 
 @Page({
     templateUrl: `build/pages/login/login.html`
@@ -14,7 +16,8 @@ export class LoginPage {
     }
 
     navigate() {
-        console.log('abdshgdkahk')
         this.nav.push(HomePage)
+        // this.nav.push(FeedCardPage)
+        
     }
 }

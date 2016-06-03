@@ -30,7 +30,7 @@ class TabIconTextPage {
 
 @Page({
   template:
-  `<ion-tabs rebeccapurple class="tabs-icon-text" selectedIndex="1" tabbarPlacement="bottom">
+  `<ion-tabs rebeccapurple class="tabs-icon-text" selectedIndex="1" tabbarPlacement="top">
   <ion-tab tabIcon="water" tabTitle="Water" [root]="tabOne"></ion-tab>
   <ion-tab tabIcon="leaf" tabTitle="Life" [root]="tabTwo"></ion-tab>
   </ion-tabs>`,
