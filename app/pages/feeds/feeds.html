@@ -1,6 +1,6 @@
 <ion-content class="feeds">
 
-<feedcardx class="myClass" *ngFor="let feedy of feeds" [single]="feedy">
+<feedcardx class="myClass" *ngFor="let feedy of feeds | async" [single]="feedy">
     
 </feedcardx>
 
