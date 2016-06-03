@@ -1,19 +1,18 @@
 import { Page } from "ionic-angular"
 import {FeedModel} from "./feedModel"
+import {Input, Component} from "@angular/core";
 
-@Page({
+@Component({
     selector: 'feedcardx',
-    inputs: ['singleFeed'],
+    inputs: ['single'],
     templateUrl: 'build/pages/feedCard/feedCard.html'
 })
 export class FeedCardPage  {
-  
-
-    
-    
+//   @Input() single;
+    single : FeedModel;
     
     constructor() {
-       
+        
     }
 
 }
