@@ -7,11 +7,12 @@ export class FeedModel {
         userId: string,
         userName: string
     }
+    
     comments: [{
         userProfile: string,
         userId: string,
         comment: string,
-        dated: string
+        timestamp: string
     }]
 
 }

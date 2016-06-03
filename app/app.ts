@@ -2,11 +2,15 @@ import {App, Platform} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {GeneralService} from './services/general';
 import { LoginPage } from './pages/login/login';
+import { defaultFirebase, FIREBASE_PROVIDERS, } from "angularfire2";
 
 
 @App({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [GeneralService],
+  providers: [GeneralService,
+    defaultFirebase('https://project-2643810182500930849.firebaseio.com/'),
+    FIREBASE_PROVIDERS
+  ],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 export class MyApp {

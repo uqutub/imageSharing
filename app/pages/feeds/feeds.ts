@@ -1,4 +1,5 @@
 import { Page } from "ionic-angular";
+import { OnInit } from "@angular/core"
 import { FeedCardPage } from "../feedCard/feedCard";
 import { FeedModel } from "../feedCard/feedModel";
 
@@ -6,12 +7,15 @@ import { FeedModel } from "../feedCard/feedModel";
     templateUrl: `build/pages/feeds/feeds.html`,
     directives: [FeedCardPage]
 })
-export class FeedsPage {
+export class FeedsPage implements OnInit {
 
     feeds: FeedModel[];
 
     constructor() {
 
+    }
+
+    ngOnInit() {
         this.feeds = [
             {
                 _id: "1",
@@ -64,7 +68,6 @@ export class FeedsPage {
                 }]
             }
         ]
-
     }
 
 
