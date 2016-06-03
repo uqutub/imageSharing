@@ -1,4 +1,14 @@
 <ion-content class="feeds">
+                        <!--<button fab fab-bottom fab-right fab-fixed> </button>-->
+                        
+                        
+                         <ion-item>
+     <img src="{{image}}">
+    <br>
+    
+    <button fab fab-bottom fab-right fab-fixed (click)="captureImage()"> <ion-icon name="camera"></ion-icon></button>
+  </ion-item>
+
 
 <feedcardx class="myClass" *ngFor="let feedy of feeds | async" [single]="feedy">
     
