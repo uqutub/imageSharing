@@ -42,7 +42,7 @@ export class FirebaseService {
         
     }
     
-    viewMoreComments() {
+    viewMoreComments() { // not implemented yet!
         
     }
 

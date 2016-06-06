@@ -1,4 +1,4 @@
-import { Page , ActionSheet,NavController } from "ionic-angular";
+import { Page, ActionSheet, NavController } from "ionic-angular";
 import { OnInit } from "@angular/core"
 import { FeedCardPage } from "../feedCard/feedCard";
 import { FeedModel } from "../feedCard/feedModel";
@@ -14,129 +14,76 @@ import {Camera} from 'ionic-native'
 })
 export class FeedsPage implements OnInit {
 
-        image = "";
+    image = "";
 
     feeds: Observable<any[]>;
 
-    constructor(private fs: FirebaseService ,private nav:NavController) {
-        
-        this.feeds = this.fs.getData();
+    constructor(private fs: FirebaseService, private nav: NavController) {
 
     }
 
     ngOnInit() {
-        // this.feeds = [
-        //     {
-        //         _id: "1",
-        //         image: "images/avatar1.jpg",
-        //         user: {
-        //             userImage: "images/profile.jpg",
-        //             userId: "u1",
-        //             userName: "user1"
-        //         },
-        //         comments: [{
-        //             userProfile: "images/profile.jpg",
-        //             userId: "",
-        //             comment: "saad",
-        //             timestamp: "1"
-        //         },
-        //             {
-        //                 userProfile: "images/profile.jpg",
-        //                 userId: "",
-        //                 comment: "comment1",
-        //                 timestamp: "1"
-        //             }]
-        //     },
-        //     {
-        //         _id: "1",
-        //         image: "images/avatar1.jpg",
-        //         user: {
-        //             userImage: "images/profile.jpg",
-        //             userId: "u1",
-        //             userName: "user1"
-        //         },
-        //         comments: [{
-        //             userProfile: "images/profile.jpg",
-        //             userId: "",
-        //             comment: "saad",
-        //             timestamp: "1"
-        //         }]
-        //     }, {
-        //         _id: "1",
-        //         image: "images/avatar1.jpg",
-        //         user: {
-        //             userImage: "images/profile.jpg",
-        //             userId: "u1",
-        //             userName: "user1"
-        //         },
-        //         comments: [{
-        //             userProfile: "images/profile.jpg",
-        //             userId: "",
-        //             comment: "saad",
-        //             timestamp: "1"
-        //         }]
-        //     }
-        // ]
+        this.feeds = this.fs.getData();
     }
-    
-    captureImage(){
-        
+
+    captureImage() {
+
         let imageFromCamera = false;
-        
+
         let actionSheet = ActionSheet.create({
             title: 'Select Method',
-            buttons:[
+            buttons: [
                 {
-                    text:'Camera',
+                    text: 'Camera',
                     handler: () => {
                         console.log('camera Clicked');
                         imageFromCamera = true;
                         getImage();
                     }
                 },
-                 {
-        text: 'Gallery',
-        handler: () => {
-          console.log('Gallery clicked');
-          imageFromCamera = false;
-          getImage();
-        }
-      },
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }
+                {
+                    text: 'Gallery',
+                    handler: () => {
+                        console.log('Gallery clicked');
+                        imageFromCamera = false;
+                        getImage();
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: () => {
+                        console.log('Cancel clicked');
+                    }
+                }
             ]
         });
-        
+
         this.nav.present(actionSheet)
-        
-        
-        let getImage= ()=>{
+
+
+        let getImage = () => {
             let options = {
                 destinationType: 0,
-                sourceType : (imageFromCamera ? 1 : 0)
+                sourceType: (imageFromCamera ? 1 : 0)
             };
-            Camera.getPicture(options).then((imageData)=>{
+            Camera.getPicture(options).then((imageData) => {
                 // imageData is either a base64 encoded string or a file URI
-            // If it's base64:
-            
-             let base64Image = "data:image/jpeg;base64," + imageData;
+                // If it's base64:
 
-            this.image = base64Image;
+                let base64Image = "data:image/jpeg;base64," + imageData;
 
-        }, (err) => {
-            console.log(err);
-            alert(err);
-        });
-            }
+                this.image = base64Image;
+
+            }, (err) => {
+                console.log(err);
+                alert(err);
+            });
         }
-        
-        
     }
-    
+
+
+}
+
 
 
