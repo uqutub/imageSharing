@@ -1,6 +1,7 @@
-import { Page } from "ionic-angular"
+// import { Page } from "ionic-angular"
+import { Component } from "@angular/core"
 
-@Page({
+@Component({
     templateUrl: 'build/pages/tabs/tabs.html'
 })
 export class IconTextPage {
@@ -9,7 +10,7 @@ export class IconTextPage {
     tabThree = TabIconTextPage;
     tabFour = TabIconTextPage;
 
-    onPageWillLeave() {
+    ionViewWillLeave() {
         document.getElementById('md-tabs-icon-text').style.display = "none";
         document.getElementById('md-only').style.display = "block";
     }

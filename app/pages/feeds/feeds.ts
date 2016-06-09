@@ -1,5 +1,5 @@
-import { Page, ActionSheet, NavController } from "ionic-angular";
-import { OnInit } from "@angular/core"
+import {ActionSheet, NavController } from "ionic-angular";
+import { OnInit, Component } from "@angular/core"
 import { FeedCardPage } from "../feedCard/feedCard";
 import { FeedModel } from "../feedCard/feedModel";
 import {FirebaseService} from '../../services/firebase';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable'
 import {Camera} from 'ionic-native'
 
 
-@Page({
+@Component({
     templateUrl: `build/pages/feeds/feeds.html`,
     directives: [FeedCardPage]
 })

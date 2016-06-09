@@ -1,12 +1,12 @@
 // 
-
+import { Component } from "@angular/core"
 import {NavController, NavParams} from 'ionic-angular';
-import {Page, ViewController, Platform} from 'ionic-angular';
+import {ViewController, Platform} from 'ionic-angular';
 import { AboutPage } from "../about/about";
 import { FeedsPage } from "../feeds/feeds";
 
 
-@Page({
+@Component({
   template:
   '<ion-navbar *navbar hideBackButton [attr.royal]="isAndroid ? \'\' : null">' +
   '<ion-title>Tabs</ion-title>' +
@@ -28,7 +28,7 @@ class TabIconTextPage {
 }
 
 
-@Page({
+@Component({
   template:
   `<ion-tabs rebeccapurple class="tabs-icon-text" selectedIndex="1" tabbarPlacement="top">
   <ion-tab tabIcon="water" tabTitle="Water" [root]="tabOne"></ion-tab>

@@ -1,4 +1,5 @@
-import {App, Platform} from 'ionic-angular';
+import {ionicBootstrap, Platform} from 'ionic-angular';
+import { Component }  from "@angular/core"
 import {StatusBar} from 'ionic-native';
 import {GeneralService} from './services/general';
 import {FirebaseService} from './services/firebase';
@@ -6,12 +7,8 @@ import { LoginPage } from './pages/login/login';
 import { defaultFirebase, FIREBASE_PROVIDERS, } from "angularfire2";
 
 
-@App({
-  template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [GeneralService, FirebaseService,
-    defaultFirebase('https://imagesharingfb.firebaseio.com'), FIREBASE_PROVIDERS
-  ],
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+@Component({
+  template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
   rootPage: any = LoginPage;
@@ -24,3 +21,7 @@ export class MyApp {
     });
   }
 }
+
+ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, defaultFirebase('https://imagesharingfb.firebaseio.com')], {
+
+})

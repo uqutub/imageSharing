@@ -1,10 +1,11 @@
-import { Page, NavController } from "ionic-angular"
+import {NavController } from "ionic-angular"
 import {GeneralService} from '../../services/general'
 import { HomePage } from "../home/home";
 import { FeedCardPage } from "../feedCard/feedCard";
+import { Component } from "@angular/core"
 
 
-@Page({
+@Component({
     templateUrl: `build/pages/login/login.html`
 })
 export class LoginPage {
