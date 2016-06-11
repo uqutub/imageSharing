@@ -6,24 +6,31 @@ import {FirebaseService} from '../../services/firebase';
 import {FirebaseListObservable} from 'angularfire2'
 import { Observable } from 'rxjs/Observable'
 import {Camera} from 'ionic-native'
+import {StorageService} from '../../services/storage'
 
 
 @Component({
     templateUrl: `build/pages/feeds/feeds.html`,
-    directives: [FeedCardPage]
+    directives: [FeedCardPage],
+    providers: [StorageService]
 })
 export class FeedsPage implements OnInit {
 
     image = "";
-
     feeds: Observable<any[]>;
 
-    constructor(private fs: FirebaseService, private nav: NavController) {
+    constructor(private fs: FirebaseService, private nav: NavController, private foo: StorageService) {
 
     }
 
+
     ngOnInit() {
         this.feeds = this.fs.getData();
+
+    }
+
+    getImg(boo) {
+        this.foo.uploadImage(boo.files[0])
     }
 
     captureImage() {
@@ -82,8 +89,13 @@ export class FeedsPage implements OnInit {
         }
     }
 
+    // Initialize Firebase
+
 
 }
+
+
+
 
 
 

@@ -20,6 +20,7 @@ export class MyApp {
       StatusBar.styleDefault();
     });
   }
+
 }
 
 ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, defaultFirebase('https://imagesharingfb.firebaseio.com')], {

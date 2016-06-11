@@ -10,10 +10,12 @@
     </ion-item>
 
 
-    <feedcardx class="myClass" *ngFor="let feedy of feeds | async" [single]="feedy">
+    <!--<feedcardx class="myClass" *ngFor="let feedy of feeds | async" [single]="feedy">-->
 
-    </feedcardx>
+    <!--</feedcardx>-->
 
+    <input type="file" #bam>
+    <button (click)="getImg(image)">go</button>
     <!--<ion-card>
         <div class="feed-title">
             <p>The quick brown fox jumps</p>
