@@ -23,6 +23,4 @@ export class MyApp {
 
 }
 
-ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, defaultFirebase('https://imagesharingfb.firebaseio.com')], {
-
-})
+ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, defaultFirebase('https://imagesharingfb.firebaseio.com')])
