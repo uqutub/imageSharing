@@ -11,7 +11,7 @@ export class StorageService {
     }
 
     uploadImage(imgId) {
-        let imageRef = this.storageRef.child('users/' + imgId.name).put(imgId);
+        let imageRef = this.storageRef.child('users/' + "newPic").put(imgId);
 
         // Register three observers:
         // 1. 'state_changed' observer, called any time the state changes

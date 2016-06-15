@@ -26,12 +26,36 @@ export class FeedsPage implements OnInit {
 
     ngOnInit() {
         this.feeds = this.fs.getData();
+        console.log
 
     }
 
-    getImg(boo) {
-        this.foo.uploadImage(boo.files[0])
+    // getImg(boo) {
+
+    // }
+
+    dataURItoBlob(dataURI, callback) {
+        // convert base64 to raw binary data held in a string
+        // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+        let byteString = atob(dataURI.split(',')[1]);
+
+        // separate out the mime component
+        let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+        // write the bytes of the string to an ArrayBuffer
+        let ab = new ArrayBuffer(byteString.length);
+        let ia = new Uint8Array(ab);
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+
+        // write the ArrayBuffer to a blob, and you're done
+        let bb = new Blob([ab], {});
+        return bb;
     }
+
+
+
 
     captureImage() {
 
@@ -80,7 +104,14 @@ export class FeedsPage implements OnInit {
 
                 let base64Image = "data:image/jpeg;base64," + imageData;
 
-                this.image = base64Image;
+
+
+                // let z = new Blob([base64Image], { type: 'image/jpg' });
+
+                this.dataURItoBlob(base64Image, (abc) => { console.log("converted", abc) })
+
+                // this.foo.uploadImage(z)
+                // this.image = base64Image;
 
             }, (err) => {
                 console.log(err);
