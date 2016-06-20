@@ -4,7 +4,7 @@ import {StatusBar} from 'ionic-native';
 import {GeneralService} from './services/general';
 import {FirebaseService} from './services/firebase';
 import { LoginPage } from './pages/login/login';
-import { defaultFirebase, FIREBASE_PROVIDERS, } from "angularfire2";
+import { defaultFirebase, FIREBASE_PROVIDERS, firebaseAuthConfig, AuthProviders, AuthMethods} from "angularfire2";
 
 
 @Component({
@@ -27,4 +27,9 @@ ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, defa
   authDomain: "imagesharingfb.firebaseapp.com",
   databaseURL: "https://imagesharingfb.firebaseio.com",
   storageBucket: "imagesharingfb.appspot.com",
-})])
+}),
+  firebaseAuthConfig({
+    provider: AuthProviders.Password,
+    method: AuthMethods.Password
+  })
+])

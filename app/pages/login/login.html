@@ -5,5 +5,24 @@
 </ion-navbar>
 
 <ion-content class="login">
-    <button (click)="navigate()" rebeccapurple>Feeds</button>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <div>
+        <button (click)="login(user)" block rebeccapurple>Sign In</button>
+        <button (click)="createAccount()" block rebeccapurple>Create Account</button>
+    </div>
+
 </ion-content>

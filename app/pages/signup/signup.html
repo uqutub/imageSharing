@@ -1,0 +1,32 @@
+<ion-navbar rebeccapurple *navbar>
+    <ion-title>
+        Create Account
+    </ion-title>
+</ion-navbar>
+
+<ion-content class="signup">
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" [(ngModel)]="cred.userName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="cred.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="cred.password"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <div>
+        <button (click)="signup(cred)" block rebeccapurple>Submit</button>
+    </div>
+
+</ion-content>
