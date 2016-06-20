@@ -17,5 +17,8 @@
   "compileOnSave": false,
   "atom": {
     "rewriteTsconfig": false
-  }
+  },
+  "files": [
+    "node_modules/angularfire2/firebase3.d.ts"
+  ]
 }

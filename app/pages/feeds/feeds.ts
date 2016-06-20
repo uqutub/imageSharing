@@ -3,7 +3,7 @@ import { OnInit, Component } from "@angular/core"
 import { FeedCardPage } from "../feedCard/feedCard";
 import { FeedModel } from "../feedCard/feedModel";
 import {FirebaseService} from '../../services/firebase';
-import {FirebaseListObservable} from 'angularfire2'
+import {AngularFire, FirebaseListObservable} from 'angularfire2'
 import { Observable } from 'rxjs/Observable'
 import {Camera} from 'ionic-native'
 import {StorageService} from '../../services/storage'
@@ -19,7 +19,7 @@ export class FeedsPage implements OnInit {
     image = "";
     feeds: Observable<any[]>;
 
-    constructor(private fs: FirebaseService, private nav: NavController, private foo: StorageService) {
+    constructor(private fs: FirebaseService, private nav: NavController, private storageService: StorageService, private af: AngularFire) {
 
     }
 
@@ -29,32 +29,6 @@ export class FeedsPage implements OnInit {
         console.log
 
     }
-
-    // getImg(boo) {
-
-    // }
-
-    dataURItoBlob(dataURI, callback) {
-        // convert base64 to raw binary data held in a string
-        // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-        let byteString = atob(dataURI.split(',')[1]);
-
-        // separate out the mime component
-        let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-
-        // write the bytes of the string to an ArrayBuffer
-        let ab = new ArrayBuffer(byteString.length);
-        let ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i++) {
-            ia[i] = byteString.charCodeAt(i);
-        }
-
-        // write the ArrayBuffer to a blob, and you're done
-        let bb = new Blob([ab], {});
-        return bb;
-    }
-
-
 
 
     captureImage() {
@@ -102,21 +76,27 @@ export class FeedsPage implements OnInit {
                 // imageData is either a base64 encoded string or a file URI
                 // If it's base64:
 
-                let base64Image = "data:image/jpeg;base64," + imageData;
+
+                this.image = "data:image/jpeg;base64," + imageData;
 
 
 
-                // let z = new Blob([base64Image], { type: 'image/jpg' });
-
-                this.dataURItoBlob(base64Image, (abc) => { console.log("converted", abc) })
-
-                // this.foo.uploadImage(z)
-                // this.image = base64Image;
 
             }, (err) => {
                 console.log(err);
                 alert(err);
-            });
+            })
+                .then(() => {
+                    // this.bar = new Blob([this.image], { type: 'image/jpg' });
+                    const path = this.af.database.list('b64Images/' + "uid");
+                    path.push(this.image);
+                })
+            // .then(() => {
+            //     this.foo.uploadImage(this.bar)
+            //     console.log(this.bar, "bar ")
+            //     // console.log(abc, "abc in promise");
+            //     // console.log(this.bam, "bam in promise")
+            // })
         }
     }
 
