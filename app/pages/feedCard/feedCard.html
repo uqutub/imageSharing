@@ -3,7 +3,7 @@
     <div *ngFor="let abc of single.comments | async">
         {{abc | json}}
     </div>
-    
+
     <ion-card>
         <div class="feed-title">
             <p>The quick brown fox jumps</p>
@@ -35,10 +35,10 @@
         <div>
             <ion-toolbar class="comment-area" position="bottom">
                 <ion-item class="comment-box">
-                    <ion-input style="background:#f8f8f8;" type="text" placeholder="Username"></ion-input>
+                    <ion-input style="background:#f8f8f8;" type="text" placeholder="Post a Comment" #comment></ion-input>
                 </ion-item>
                 <ion-buttons end>
-                    <button royal>
+                    <button royal (click)="doComment(comment)">
                             <ion-icon rebeccapurple name="send"></ion-icon>
                     </button>
                 </ion-buttons>
