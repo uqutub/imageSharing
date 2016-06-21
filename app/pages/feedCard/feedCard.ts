@@ -2,6 +2,7 @@
 import {FeedModel} from "./feedModel"
 import {Input, Component} from "@angular/core";
 import { AngularFire } from "angularfire2"
+import { CurrentUserCredentials } from '../../services/currentUserCred'
 
 @Component({
     selector: 'feedcardx',
@@ -11,15 +12,16 @@ import { AngularFire } from "angularfire2"
 export class FeedCardPage {
     //   @Input() single;
     single: FeedModel;
+    user;
 
-    constructor(private af: AngularFire) {
-
+    constructor(private af: AngularFire, private userData: CurrentUserCredentials) {
+        this.user = userData.getCred()
     }
 
     doComment(txt: HTMLInputElement) {
-        const path = this.af.database.list('comments' + '/' + 'feedid');
+        const path = this.af.database.list('comments' + '/' + this.user.auth.uid);
 
-        path.push({ text: txt.value, postedOn: 68746874646, user: { userImage: "image", userId: 3513516516513513, userName: "jumman" } })
+        path.push({ text: txt.value, postedOn: firebase.database.ServerValue.TIMESTAMP, user: { userImage: "image", userId: this.user.auth.uid, userName: "jumman" } })
             .then(() => console.log(txt.value, " posted successfully"))
     }
 

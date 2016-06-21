@@ -5,6 +5,7 @@ import {GeneralService} from './services/general';
 import {FirebaseService} from './services/firebase';
 import { LoginPage } from './pages/login/login';
 import { defaultFirebase, FIREBASE_PROVIDERS, firebaseAuthConfig, AuthProviders, AuthMethods} from "angularfire2";
+import { CurrentUserCredentials } from "./services/currentUserCred"
 
 
 @Component({
@@ -12,6 +13,7 @@ import { defaultFirebase, FIREBASE_PROVIDERS, firebaseAuthConfig, AuthProviders,
 })
 export class MyApp {
   rootPage: any = LoginPage;
+
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -22,7 +24,7 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, defaultFirebase({
+ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, CurrentUserCredentials, defaultFirebase({
   apiKey: "AIzaSyDoUmmocXv2m1Rn-3QyDsBfJ7iLP0I9sx8",
   authDomain: "imagesharingfb.firebaseapp.com",
   databaseURL: "https://imagesharingfb.firebaseio.com",

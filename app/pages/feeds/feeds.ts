@@ -1,12 +1,13 @@
-import {ActionSheet, NavController } from "ionic-angular";
+import { ActionSheet, NavController } from "ionic-angular";
 import { OnInit, Component } from "@angular/core"
 import { FeedCardPage } from "../feedCard/feedCard";
 import { FeedModel } from "../feedCard/feedModel";
-import {FirebaseService} from '../../services/firebase';
-import {AngularFire, FirebaseListObservable} from 'angularfire2'
+import { FirebaseService } from '../../services/firebase';
+import { AngularFire } from 'angularfire2'
 import { Observable } from 'rxjs/Observable'
-import {Camera} from 'ionic-native'
-import {StorageService} from '../../services/storage'
+import { Camera } from 'ionic-native'
+import { StorageService } from '../../services/storage'
+import { CurrentUserCredentials } from '../../services/currentUserCred'
 
 
 @Component({
@@ -18,17 +19,19 @@ export class FeedsPage implements OnInit {
 
     image = "";
     feeds: Observable<any[]>;
+    userCred
 
-    constructor(private fs: FirebaseService, private nav: NavController, private storageService: StorageService, private af: AngularFire) {
+    constructor(private fs: FirebaseService, private nav: NavController, private storageService: StorageService, private af: AngularFire, private userData: CurrentUserCredentials) {
 
     }
 
 
     ngOnInit() {
         this.feeds = this.fs.getData();
-        console.log
+        this.userCred = this.userData.getCred()
 
     }
+
 
 
     captureImage() {
@@ -84,7 +87,7 @@ export class FeedsPage implements OnInit {
             })
                 .then(() => {
                     // this.bar = new Blob([this.image], { type: 'image/jpg' });
-                    const path = this.af.database.list('b64Images/' + "uid");
+                    const path = this.af.database.list('b64Images/' + this.userCred.auth.uid);
                     path.push(this.image);
                 })
             // .then(() => {

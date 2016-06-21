@@ -5,6 +5,7 @@ import { FeedCardPage } from "../feedCard/feedCard";
 import { Component } from "@angular/core"
 import { SignupPage } from "../signup/signup"
 import { AngularFire } from "angularfire2"
+import { FeedsPage } from "../feeds/feeds"
 
 @Component({
     templateUrl: `build/pages/login/login.html`
@@ -26,6 +27,7 @@ export class LoginPage {
     login(user) {
         this.af.auth.login({ email: user.email, password: user.password })
             .then((abc) => {
+                this.nav.push(FeedsPage)
                 console.log("success", abc)
             })
             .catch((err) => {

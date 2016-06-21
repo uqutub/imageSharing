@@ -1,17 +1,21 @@
+<ion-navbar rebeccapurple hideBackButton *navbar>
+    <ion-title>
+    Feeds
+    </ion-title>
+</ion-navbar>
+
 <ion-content class="feeds">
     <!--<button fab fab-bottom fab-right fab-fixed> </button>-->
-
-
-    <ion-item>
+    <!--<ion-item>
         <img src="{{image}}">
         <br>
 
-        <button class="fab-button" fab fab-bottom fab-right fab-fixed (click)="captureImage()"> <ion-icon name="camera"></ion-icon></button>
-    </ion-item>
+
+    </ion-item>-->
 
 
     <feedcardx class="myClass" *ngFor="let feedy of feeds | async" [single]="feedy">
 
     </feedcardx>
-
+    <button class="fab-button" fab fab-bottom fab-right fab-fixed (click)="captureImage()"> <ion-icon name="camera"></ion-icon></button>
 </ion-content>
