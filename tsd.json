@@ -6,7 +6,7 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "firebase/firebase.d.ts": {
-      "commit": "1315d46f8066eec8c197914da88e98629ebc2254"
+      "commit": "3ee59b28b6c492d59c42bafd880d2c4d64788cbb"
     }
   }
 }

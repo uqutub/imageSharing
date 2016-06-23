@@ -12,16 +12,21 @@ import { CurrentUserCredentials } from '../../services/currentUserCred'
 export class FeedCardPage {
     //   @Input() single;
     single: FeedModel;
-    user;
+    userCred;
 
     constructor(private af: AngularFire, private userData: CurrentUserCredentials) {
-        this.user = userData.getCred()
+        this.userData.getCred().subscribe(userCred => { this.userCred = userCred; console.log(userCred, this.userCred, "from commebtasdad") });
+    }
+
+    ionViewLoaded() { // not working as expected
+
     }
 
     doComment(txt: HTMLInputElement) {
-        const path = this.af.database.list('comments' + '/' + this.user.auth.uid);
+        console.log("comment txt function", this.userCred.auth.uid)
+        const path = this.af.database.list('comments' + '/' + this.userCred.auth.uid);
 
-        path.push({ text: txt.value, postedOn: firebase.database.ServerValue.TIMESTAMP, user: { userImage: "image", userId: this.user.auth.uid, userName: "jumman" } })
+        path.push({ text: txt.value, postedOn: firebase.database.ServerValue.TIMESTAMP, user: { userImage: "image", userId: this.userCred.auth.uid, userName: "jumman" } })
             .then(() => console.log(txt.value, " posted successfully"))
     }
 

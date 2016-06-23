@@ -7,8 +7,5 @@ export class CurrentUserCredentials {
 
     }
 
-
-    getCred() {
-        return this.af.auth.getAuth()
-    }
+    getCred() { return this.af.auth.asObservable() }
 } 

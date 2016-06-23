@@ -20,7 +20,7 @@ class TabIconTextPage {
   constructor(platform: Platform) {
     this.isAndroid = platform.is('android');
   }
-  onPageWillEnter() {
+  ionViewWillEnter() {
     console.log('enter');
     document.getElementById('md-tabs-icon-text').style.display = "block";
     document.getElementById('md-only').style.display = "none";
@@ -41,7 +41,7 @@ export class HomePage {
   // tabThree = TabIconTextPage;
   // tabFour = TabIconTextPage;
 
-  onPageWillLeave() {
+  ionViewWillLeave() {
     document.getElementById('md-tabs-icon-text').style.display = "none";
     document.getElementById('md-only').style.display = "block";
   }

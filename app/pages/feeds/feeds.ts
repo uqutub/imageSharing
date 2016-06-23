@@ -23,13 +23,17 @@ export class FeedsPage implements OnInit {
 
     constructor(private fs: FirebaseService, private nav: NavController, private storageService: StorageService, private af: AngularFire, private userData: CurrentUserCredentials) {
 
+
+        console.log("constructor is running")
+
     }
 
 
-    ngOnInit() {
+    ionViewLoaded() {
         this.feeds = this.fs.getData();
-        this.userCred = this.userData.getCred()
-
+        console.log("ionView is running")
+        console.log(this.userCred, "ajsdkljlasdlk");
+        this.userData.getCred().subscribe(userCred => { this.userCred = userCred; console.log(userCred, "userCred") });
     }
 
 

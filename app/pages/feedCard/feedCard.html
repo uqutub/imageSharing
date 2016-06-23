@@ -33,8 +33,8 @@
                 <ion-item class="comment-box">
                     <ion-input style="background:#f8f8f8;" type="text" placeholder="Post a Comment" #comment></ion-input>
                 </ion-item>
-                <ion-buttons end>
-                    <button royal (click)="doComment(comment)">
+                <ion-buttons (click)="doComment(comment)" end>
+                    <button royal>
                             <ion-icon rebeccapurple name="send"></ion-icon>
                     </button>
                 </ion-buttons>
