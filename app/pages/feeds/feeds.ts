@@ -1,5 +1,5 @@
-import { ActionSheet, NavController } from "ionic-angular";
-import { OnInit, Component } from "@angular/core"
+import { ActionSheet, NavController, Modal } from "ionic-angular";
+import { Component } from "@angular/core"
 import { FeedCardPage } from "../feedCard/feedCard";
 import { FeedModel } from "../feedCard/feedModel";
 import { FirebaseService } from '../../services/firebase';
@@ -8,34 +8,49 @@ import { Observable } from 'rxjs/Observable'
 import { Camera } from 'ionic-native'
 import { StorageService } from '../../services/storage'
 import { CurrentUserCredentials } from '../../services/currentUserCred'
+import { LoginPage } from "../login/login"
 
 
 @Component({
     templateUrl: `build/pages/feeds/feeds.html`,
-    directives: [FeedCardPage],
-    providers: [StorageService]
+    directives: [FeedCardPage]
 })
-export class FeedsPage implements OnInit {
+export class FeedsPage {
 
     image = "";
     feeds: Observable<any[]>;
     userCred
 
-    constructor(private fs: FirebaseService, private nav: NavController, private storageService: StorageService, private af: AngularFire, private userData: CurrentUserCredentials) {
+    constructor(private fs: FirebaseService, private nav: NavController, private af: AngularFire, private userData: CurrentUserCredentials) {
+        console.log("constructor is running frm feeds.ts")
 
+        this.feeds = this.fs.getData();
+        this.userCred = this.userData.getCred();
 
-        console.log("constructor is running")
+    }
 
+    loginModal() {
+        let modal = Modal.create(LoginPage);
+        this.nav.present(modal);
     }
 
 
     ionViewLoaded() {
-        this.feeds = this.fs.getData();
-        console.log("ionView is running")
-        console.log(this.userCred, "ajsdkljlasdlk");
-        this.userData.getCred().subscribe(userCred => { this.userCred = userCred; console.log(userCred, "userCred") });
+        console.log("ionView did enter is running frm feeds.ts")
+
+        this.af.auth.subscribe(data => {
+            if (!data) {
+                console.log("user is signed out")
+                this.loginModal()
+            } else {
+                console.log("user is signed in");
+            }
+        })
     }
 
+    ionViewWillEnter() {
+        console.log("view Will enter lifecycle hook is running")
+    }
 
 
     captureImage() {
@@ -76,13 +91,17 @@ export class FeedsPage implements OnInit {
 
         let getImage = () => {
             let options = {
-                destinationType: 0,
-                sourceType: (imageFromCamera ? 1 : 0)
+                destinationType: 1,
+                EncodingType: 0,
+                MediaType: 0,
+                sourceType: (imageFromCamera ? 1 : 0),
+                saveToPhotoAlbum: false,
+                correctOrientation: true
             };
             Camera.getPicture(options).then((imageData) => {
                 // imageData is either a base64 encoded string or a file URI
                 // If it's base64:
-                this.image = "data:image/jpeg;base64," + imageData;
+                this.image = imageData;
 
 
             }, (err) => {

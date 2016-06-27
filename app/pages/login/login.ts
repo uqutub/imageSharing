@@ -1,5 +1,5 @@
-import {NavController } from "ionic-angular"
-import {GeneralService} from '../../services/general'
+import { NavController, Modal } from "ionic-angular"
+import { GeneralService } from '../../services/general'
 import { HomePage } from "../home/home";
 import { FeedCardPage } from "../feedCard/feedCard";
 import { Component } from "@angular/core"
@@ -19,10 +19,14 @@ export class LoginPage {
         this.title = generalService.appTitle
     }
 
-    createAccount() {
-        this.nav.push(SignupPage)
-    }
+    // createAccount() {
+    //     this.nav.push(SignupPage)
+    // }
 
+    showSignupModal() {
+        let modal = Modal.create(SignupPage);
+        this.nav.present(modal)
+    }
 
     login(user) {
         this.af.auth.login({ email: user.email, password: user.password })

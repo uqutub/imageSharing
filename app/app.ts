@@ -1,18 +1,20 @@
-import {ionicBootstrap, Platform} from 'ionic-angular';
+import { ionicBootstrap, Platform } from 'ionic-angular';
 import { Component }  from "@angular/core"
-import {StatusBar} from 'ionic-native';
-import {GeneralService} from './services/general';
-import {FirebaseService} from './services/firebase';
+import { StatusBar } from 'ionic-native';
+import { GeneralService } from './services/general';
+import { FirebaseService } from './services/firebase';
+import { FeedsPage } from "./pages/feeds/feeds"
 import { LoginPage } from './pages/login/login';
 import { defaultFirebase, FIREBASE_PROVIDERS, firebaseAuthConfig, AuthProviders, AuthMethods} from "angularfire2";
 import { CurrentUserCredentials } from "./services/currentUserCred"
+// import { SignupPage } from "./pages/signup/signup"
 
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
-  rootPage: any = LoginPage;
+  rootPage: any = FeedsPage;
 
 
   constructor(platform: Platform) {
@@ -34,4 +36,5 @@ ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, Curr
     provider: AuthProviders.Password,
     method: AuthMethods.Password
   })
-])
+]
+)

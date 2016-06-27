@@ -1,7 +1,7 @@
 
 import { Component } from "@angular/core"
 import { AngularFire } from "angularfire2";
-import { NavController } from "ionic-angular"
+import { NavController, ViewController } from "ionic-angular"
 import { FeedsPage } from "../feeds/feeds"
 
 
@@ -10,7 +10,7 @@ import { FeedsPage } from "../feeds/feeds"
 })
 export class SignupPage {
     cred = {};
-    constructor(private af: AngularFire, private nav: NavController) {
+    constructor(private af: AngularFire, private nav: NavController, private viewCtrl: ViewController) {
 
     }
 
@@ -23,5 +23,9 @@ export class SignupPage {
             .catch((err) => {
                 console.log("error", err)
             })
+    }
+
+    dismiss() {
+        this.viewCtrl.dismiss();
     }
 }

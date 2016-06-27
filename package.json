@@ -29,6 +29,7 @@
     "run-sequence": "1.1.5"
   },
   "name": "imagesharing",
+  "version": "1.0",
   "description": "imageSharing: An Ionic project",
   "cordovaPlugins": [
     "cordova-plugin-device",
