@@ -25,8 +25,7 @@ export class FeedsPage {
         console.log("constructor is running frm feeds.ts")
 
         this.feeds = this.fs.getData();
-        this.userCred = this.userData.getCred();
-
+        // this.userCred = this.userData.getCred();
     }
 
     loginModal() {
@@ -36,20 +35,24 @@ export class FeedsPage {
 
 
     ionViewLoaded() {
-        console.log("ionView did enter is running frm feeds.ts")
+        console.log("ionViewDidEnter is running frm feeds.ts")
+
+
+    }
+
+    ionViewWillEnter() {
+        console.log("ionViewWillEnter lifecycle hook is running frm feeds.ts")
 
         this.af.auth.subscribe(data => {
             if (!data) {
                 console.log("user is signed out")
                 this.loginModal()
             } else {
+                this.userCred = data;
                 console.log("user is signed in");
+                console.log("user cred", this.userCred)
             }
         })
-    }
-
-    ionViewWillEnter() {
-        console.log("view Will enter lifecycle hook is running")
     }
 
 

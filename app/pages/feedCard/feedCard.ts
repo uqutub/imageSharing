@@ -15,7 +15,9 @@ export class FeedCardPage {
     userCred;
 
     constructor(private af: AngularFire, private userData: CurrentUserCredentials) {
-        this.userCred = this.userData.getCred();
+        // this.userCred = this.userData.getCred();
+        this.af.auth.subscribe(data => this.userCred = data);
+
     }
 
     ionViewLoaded() { // not working as expected
