@@ -1,31 +1,31 @@
 <ion-header>
-    <ion-navbar rebeccapurple>
-        <ion-title>
-            {{title}}
-        </ion-title>
-    </ion-navbar>
+  <ion-navbar rebeccapurple>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
 
 </ion-header>
 
 <ion-content class="login">
 
-    <ion-list>
+  <ion-list>
 
-        <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input type="email" [(ngModel)]="user.email"></ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
 
-        <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
 
-    </ion-list>
+  </ion-list>
 
-    <div>
-        <button (click)="login(user)" block rebeccapurple>Sign In</button>
-        <button (click)="showSignupModal()" block rebeccapurple>Create Account</button>
-    </div>
+  <div>
+    <button (click)="login(user)" block rebeccapurple>Sign In</button>
+    <button (click)="showSignupModal()" block rebeccapurple>Create Account</button>
+  </div>
 
 </ion-content>

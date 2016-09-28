@@ -1,31 +1,28 @@
-import { NavController, Modal } from "ionic-angular"
-import { GeneralService } from '../../services/general'
-import { HomePage } from "../home/home";
-import { FeedCardPage } from "../feedCard/feedCard";
-import { Component } from "@angular/core"
-import { SignupPage } from "../signup/signup"
-import { AngularFire } from "angularfire2"
-import { FeedsPage } from "../feeds/feeds"
+import { Component } from '@angular/core';
+import { NavController, ModalController } from 'ionic-angular';
+import { AngularFire } from "angularfire2";
+import { SignupPage } from "../signup/signup";
+import { FeedsPage } from "../feeds/feeds";
 
+/*
+  Generated class for the LoginPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
-    templateUrl: `build/pages/login/login.html`
+    templateUrl: 'build/pages/login/login.html',
 })
 export class LoginPage {
     title: string;
     user = {}
 
-    constructor(private generalService: GeneralService, private nav: NavController, private af: AngularFire) {
-
-        this.title = generalService.appTitle
+    constructor(private nav: NavController, private af: AngularFire, private modal: ModalController) {
     }
 
-    // createAccount() {
-    //     this.nav.push(SignupPage)
-    // }
-
     showSignupModal() {
-        let modal = Modal.create(SignupPage);
-        this.nav.present(modal)
+        let modal = this.modal.create(SignupPage);
+        modal.present(modal)
     }
 
     login(user) {

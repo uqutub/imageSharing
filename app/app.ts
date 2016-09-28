@@ -1,21 +1,15 @@
-import { ionicBootstrap, Platform } from 'ionic-angular';
-import { Component }  from "@angular/core"
-import { StatusBar } from 'ionic-native';
-import { GeneralService } from './services/general';
-import { FirebaseService } from './services/firebase';
-import { FeedsPage } from "./pages/feeds/feeds"
-import { LoginPage } from './pages/login/login';
-import { defaultFirebase, FIREBASE_PROVIDERS, firebaseAuthConfig, AuthProviders, AuthMethods} from "angularfire2";
-import { CurrentUserCredentials } from "./services/currentUserCred"
-// import { SignupPage } from "./pages/signup/signup"
-
+import {Component} from '@angular/core';
+import {Platform, ionicBootstrap} from 'ionic-angular';
+import {StatusBar} from 'ionic-native';
+import {HomePage} from './pages/home/home';
+import {FeedsPage} from './pages/feeds/feeds';
+import { defaultFirebase, FIREBASE_PROVIDERS, firebaseAuthConfig, AuthProviders, AuthMethods } from "angularfire2";
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
-  rootPage: any = FeedsPage;
-
+  rootPage: any = HomePage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -26,7 +20,7 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, CurrentUserCredentials, defaultFirebase({
+ionicBootstrap(MyApp, [FIREBASE_PROVIDERS, defaultFirebase({
   apiKey: "AIzaSyDoUmmocXv2m1Rn-3QyDsBfJ7iLP0I9sx8",
   authDomain: "imagesharingfb.firebaseapp.com",
   databaseURL: "https://imagesharingfb.firebaseio.com",
@@ -36,5 +30,4 @@ ionicBootstrap(MyApp, [GeneralService, FirebaseService, FIREBASE_PROVIDERS, Curr
     provider: AuthProviders.Password,
     method: AuthMethods.Password
   })
-]
-)
+]);

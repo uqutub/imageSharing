@@ -1,23 +1,23 @@
+<!--
+  Generated template for the FeedsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-<ion-navbar rebeccapurple hideBackButton>
-    <ion-title>
-        Feeds
-    </ion-title>
-</ion-navbar>
+
+  <ion-navbar rebeccapurple hideBackButton>
+    <ion-title>FEEDS</ion-title>
+  </ion-navbar>
+
 </ion-header>
 
-<ion-content class="feeds">
-    <!--<button fab fab-bottom fab-right fab-fixed> </button>-->
-    <!--<ion-item>
-        <img src="{{image}}">
-        <br>
 
+<ion-content padding class="feeds">
+<h1>hi</h1>
+{{feeds | async | json}}
+  <feedcardx class="myClass" *ngFor="let feedy of feeds | async" [single]="feedy">helllo</feedcardx>
 
-    </ion-item>-->
+  <button class="fab-button" fab fab-bottom fab-right fab-fixed (click)="captureImage()"> <ion-icon name="camera"></ion-icon></button>
 
-
-    <feedcardx class="myClass" *ngFor="let feedy of feeds | async" [single]="feedy">
-
-    </feedcardx>
-    <button class="fab-button" fab fab-bottom fab-right fab-fixed (click)="captureImage()"> <ion-icon name="camera"></ion-icon></button>
 </ion-content>
