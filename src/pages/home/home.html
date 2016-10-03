@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Image Sharing
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content>
 
   <ion-card>
-    
+
     <img src="http://ionicframework.com/dist/preview-app/www/assets/img/advance-card-bttf.png">
 
     <button class="share-fab" color="light" ion-fab><ion-icon name="share"  color="primary"></ion-icon></button>
@@ -57,5 +57,9 @@
     </ion-row>
 
   </ion-card>
+
+  <ion-fab bottom right>
+    <button (click)="newPost()" ion-fab>Button</button>
+  </ion-fab>
 
 </ion-content>
