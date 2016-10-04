@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
+
+// COMPONENTS
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewPostModal } from '../pages/newPostModal/postModal';
 import { AngularFireModule } from 'angularfire2';
+import { PostCard } from '../pages/postCard/postCard';
+
+// SERVICES
+import { FirebaseService } from '../services/firebaseService';
 
 // Must export the config
 export const firebaseConfig = {
@@ -18,7 +24,8 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    NewPostModal
+    NewPostModal,
+    PostCard
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -28,8 +35,11 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    NewPostModal
+    NewPostModal,
+    PostCard
   ],
-  providers: []
+  providers: [
+    FirebaseService
+  ]
 })
 export class AppModule { }

@@ -28,28 +28,23 @@
 
         <ion-item>
             <ion-label floating>Title</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="post.title"></ion-input>
         </ion-item>
 
         <ion-item class="select-category">
             <ion-label>Category</ion-label>
-            <ion-select [(ngModel)]="gaming">
+            <ion-select [(ngModel)]="post.category">
                 <ion-option value={{category}} *ngFor="let category of categories">{{category}}</ion-option>
-                <!--<ion-option value="n64">Nintendo64</ion-option>
-                <ion-option value="ps">PlayStation</ion-option>
-                <ion-option value="genesis">Sega Genesis</ion-option>
-                <ion-option value="saturn">Sega Saturn</ion-option>
-                <ion-option value="snes">SNES</ion-option>-->
             </ion-select>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Description</ion-label>
-            <ion-textarea rows="6"></ion-textarea>
+            <ion-textarea rows="6" [(ngModel)]="post.description"></ion-textarea>
         </ion-item>
 
     </ion-list>
 
-    <button class="submit-button" ion-button block>Post</button>
+    <button class="submit-button" (click)="newPost(post)" ion-button block>Post</button>
 
 </ion-content>
