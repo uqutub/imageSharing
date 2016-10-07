@@ -1,4 +1,4 @@
-var ngTemplate = require('../dist/plugins/ng-template').ngTemplate;
+var ngTemplate = require('./../node_modules/@ionic/app-scripts/dist/plugins/ng-template').ngTemplate;
 var nodeResolve = require('rollup-plugin-node-resolve');
 var commonjs = require('rollup-plugin-commonjs');
 
@@ -28,7 +28,7 @@ module.exports = {
    */
   dest: 'main.js',
 
-  
+
   // Add this to avoid Eval errors
   useStrict: false,
 
@@ -39,15 +39,15 @@ module.exports = {
   plugins: [
     ngTemplate(),
     commonjs({
-       include: [
+      include: [
         'node_modules/rxjs/**',
         'node_modules/firebase/**',
         'node_modules/angularfire2/**'
-        ],
-        namedExports: {
+      ],
+      namedExports: {
         'node_modules/firebase/firebase.js': ['initializeApp', 'auth', 'database'],
         'node_modules/angularfire2/node_modules/firebase/firebase-browser.js': ['initializeApp', 'auth', 'database']
-        }
+      }
     }),
     nodeResolve({
       module: true,

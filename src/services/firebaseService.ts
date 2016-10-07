@@ -7,10 +7,28 @@ export class FirebaseService {
     }
 
     saveNewPost(post) {
-        console.log('serviec')
-        let ref = this.af.database.list('feeds')
+        let ref = this.af.database.list('feeds');
+        ref.push(post)
+            .then(() => {
+                console.log('created new post successfully !')
+            })
+            .catch((err) => {
+                console.log('error in creating new post :', err)
+            })
+    }
 
-        ref.push(post);
+    saveImageToFirebase(b64Image: string) {
+
+        return new Promise((res, rej) => {
+            let StorageRef = firebase.storage().ref().child('postImages/user')
+            StorageRef['putString'](b64Image, 'base64', { contentType: 'image/jpeg' })
+                .then((snapshot) => {
+                    res(Promise.resolve(snapshot));
+                })
+                .catch((err) => {
+                    rej(err);
+                })
+        })
     }
 
 }

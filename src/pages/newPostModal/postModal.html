@@ -15,11 +15,11 @@
             </button>
 
             <ion-fab-list side="right">
-                <button ion-fab><ion-icon name="camera"></ion-icon></button>
+                <button (click)="takePicture(1)" ion-fab><ion-icon name="camera"></ion-icon></button>
             </ion-fab-list>
 
             <ion-fab-list side="left">
-                <button ion-fab><ion-icon name="image"></ion-icon></button>
+                <button (click)="takePicture(0)" ion-fab><ion-icon name="image"></ion-icon></button>
             </ion-fab-list>
         </ion-fab>
     </div>
