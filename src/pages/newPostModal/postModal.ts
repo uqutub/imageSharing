@@ -32,12 +32,15 @@ export class NewPostModal {
     }
 
     newPost(post) {
+        if (!this.postImage) {
+            return console.log("Image is necessary !")
+        }
         this.fs.saveImageToFirebase(this.postImage.toString())
             .then((snapshot) => {
-                console.log('Uploaded a base64 string! :', snapshot);
+                this.post.postImage = snapshot['downloadURL'];
             })
             .then(() => {
-                console.log("2nd promise fired after capturing images")
+                this.fs.saveNewPost(post);
             })
             .catch((err) => { console.log('error in uploading image :', err); })
     }
