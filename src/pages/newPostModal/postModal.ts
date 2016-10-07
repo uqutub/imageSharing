@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FirebaseService } from '../../services/firebaseService';
+import { ViewController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 
 @Component({
@@ -7,10 +8,10 @@ import { Camera } from 'ionic-native';
     templateUrl: 'postModal.html'
 })
 export class NewPostModal {
-    post: { title?: string, category?: string, description?: string, postImage?: string } = { 'postImage': null };
+    post: { title?: string, category?: string, description?: string, postImage?: string, forSell?: boolean } = { 'postImage': null };
     postImage: string;
     categories: String[] = ['Entertainment', 'Arts', 'Science', 'Education', 'Humor'];
-    constructor(private fs: FirebaseService) {
+    constructor(private fs: FirebaseService, public viewCtrl: ViewController) {
     }
 
     takePicture(srcType: number) {
@@ -32,17 +33,22 @@ export class NewPostModal {
     }
 
     newPost(post) {
-        if (!this.postImage) {
-            return console.log("Image is necessary !")
-        }
-        this.fs.saveImageToFirebase(this.postImage.toString())
-            .then((snapshot) => {
-                this.post.postImage = snapshot['downloadURL'];
-            })
-            .then(() => {
-                this.fs.saveNewPost(post);
-            })
-            .catch((err) => { console.log('error in uploading image :', err); })
+        console.log(post)
+        // if (!this.postImage) {
+        //     return console.log("Image is necessary !")
+        // }
+        // this.fs.saveImageToFirebase(this.postImage.toString())
+        //     .then((snapshot) => {
+        //         this.post.postImage = snapshot['downloadURL'];
+        //     })
+        //     .then(() => {
+        //         this.fs.saveNewPost(post);
+        //     })
+        //     .catch((err) => { console.log('error in uploading image :', err); })
+    }
+
+    dismiss() {
+        this.viewCtrl.dismiss();
     }
 }
 
