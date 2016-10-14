@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewPostModal } from '../pages/newPostModal/postModal';
 import { AngularFireModule } from 'angularfire2';
+import firebase from 'firebase';
 import { PostCard } from '../pages/postCard/postCard';
 
 // SERVICES

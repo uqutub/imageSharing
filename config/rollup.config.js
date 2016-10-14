@@ -20,11 +20,6 @@ var rollupConfig = {
    * be created.
    */
   sourceMap: true,
-
-
-  /**
- * useStrict: this to avoid eval errors from preventing your build.
- */
   useStrict: false,
 
   /**
