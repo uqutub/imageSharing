@@ -1,17 +1,17 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Image Sharing
-    </ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>
+			Image Sharing
+		</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content>
 
-  <post-card *ngFor="let post of posts" [post]=post></post-card>
+	<post-card *ngFor="let post of posts" [post]=post></post-card>
 
-  <ion-fab bottom right>
-    <button (click)="newPost()" ion-fab>Button</button>
-  </ion-fab>
+	<ion-fab bottom right>
+		<button (click)="newPost()" ion-fab>Button</button>
+	</ion-fab>
 
 </ion-content>

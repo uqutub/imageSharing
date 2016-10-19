@@ -5,9 +5,10 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NewPostModal } from '../pages/newPostModal/postModal';
+import * as firebase from "firebase";
 import { AngularFireModule } from 'angularfire2';
-import firebase from 'firebase';
 import { PostCard } from '../pages/postCard/postCard';
+import { LoginModal } from '../pages/fbLoginModal/loginModal';
 
 // SERVICES
 import { FirebaseService } from '../services/firebaseService';
@@ -26,6 +27,7 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     NewPostModal,
+    LoginModal,
     PostCard
   ],
   imports: [
@@ -37,6 +39,7 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     NewPostModal,
+    LoginModal,
     PostCard
   ],
   providers: [
