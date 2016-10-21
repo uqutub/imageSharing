@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FirebaseService } from '../../services/firebaseService';
+import { FirebaseService } from '../../services/services';
 import { ViewController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 

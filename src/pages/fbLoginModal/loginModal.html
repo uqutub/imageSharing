@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
 	<ion-toolbar>
 		<ion-title>
 			Login
@@ -10,16 +10,21 @@
       </button>
 		</ion-buttons>
 	</ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content>
 
-	<button (click)="facebookLogin()" ion-button icon-left>
+	<div class="logo-container">
+		<ion-icon name="logo-angular"></ion-icon>
+		<h3>Image-R</h3>
+	</div>
+
+	<button (click)="facebookLogin()" class="loginButton" ion-button icon-left>
       <ion-icon name='logo-facebook'></ion-icon>
-      Login With Facebook
+      Login with Facebook
     </button>
 
-	<ion-card *ngIf="userProfile">
+	<!--<ion-card *ngIf="userProfile">
 		<img [src]="userProfile.photoURL" />
 		<ion-card-content>
 			<ion-card-title>
@@ -29,7 +34,7 @@
 				The UID for this new user is {{userProfile.uid}} and the email is {{userProfile.email}}
 			</p>
 		</ion-card-content>
-	</ion-card>
+	</ion-card>-->
 
 
 </ion-content>

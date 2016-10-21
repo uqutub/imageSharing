@@ -11,7 +11,7 @@ import { PostCard } from '../pages/postCard/postCard';
 import { LoginModal } from '../pages/fbLoginModal/loginModal';
 
 // SERVICES
-import { FirebaseService } from '../services/firebaseService';
+import { FirebaseService, AuthService } from '../services/services';
 
 // Must export the config
 export const firebaseConfig = {
@@ -43,7 +43,8 @@ export const firebaseConfig = {
     PostCard
   ],
   providers: [
-    FirebaseService
+    FirebaseService,
+    AuthService
   ]
 })
 export class AppModule { }

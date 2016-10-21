@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import { Facebook } from 'ionic-native';
 import { AngularFire, FirebaseApp } from 'angularfire2';
+import { AuthService } from '../../services/services';
 
 @Component({
     selector: 'loginModal',
@@ -13,6 +14,7 @@ export class LoginModal {
     constructor(
         private viewCtrl: ViewController,
         @Inject(FirebaseApp) private firebaseApp: any,
+        private authService: AuthService
     ) {
 
     }
@@ -25,6 +27,15 @@ export class LoginModal {
                 .then((success) => {
                     console.log("Firebase success: " + JSON.stringify(success));
                     this.userProfile = success;
+                    this.authService.setAuthInfo(success)
+                        .then(() => {
+                            this.viewCtrl.dismiss();
+                            this.authService.getAuthInfo()
+                                .then((authData) => {
+                                    console.log("authData", authData)
+                                })
+                        })
+
                 })
                 .catch((error) => {
                     console.log("Firebase failure: " + JSON.stringify(error));

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, ModalOptions } from 'ionic-angular';
 import { NewPostModal } from '../newPostModal/postModal';
 import { PostCard } from '../postCard/postCard';
 import { AngularFire } from 'angularfire2';
@@ -7,7 +7,6 @@ import { LoginModal } from '../fbLoginModal/loginModal';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import { Observable } from 'rxjs/Rx';
-
 
 @Component({
   selector: 'page-home',
@@ -33,7 +32,7 @@ export class HomePage {
       console.log(auth, "auth")
 
       if (auth == null) {
-        this.modalCtrl.create(LoginModal).present();
+        this.modalCtrl.create(LoginModal, {}, { enableBackdropDismiss: false }).present();
         return false;
       } else {
         return true;

@@ -31,4 +31,21 @@ export class FirebaseService {
         })
     }
 
+
+
+}
+
+
+@Injectable()
+export class AuthService {
+    userAuthData: any
+
+    setAuthInfo(authObj) {
+        return Promise.resolve(this.userAuthData = authObj);
+    }
+
+    getAuthInfo() {
+        return this.userAuthData ? Promise.resolve(this.userAuthData) : Promise.reject(console.log("No User AuthData Available"));
+        // return Promise.resolve(this.userAuthData);
+    }
 }
